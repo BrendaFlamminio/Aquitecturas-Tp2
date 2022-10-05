@@ -1,16 +1,16 @@
-import implementation.CarreraDaoImpl;
-import implementation.EstudianteDaoImpl;
-import implementation.MatriculaDaoImpl;
-import interfaces.CarreraDao;
-import interfaces.EstudianteDao;
-import interfaces.MatriculaDao;
+import implementation.CarreraRepositoryImpl;
+import implementation.EstudianteRepositoryImpl;
+import implementation.MatriculaRepositoryImpl;
+import interfaces.CarreraRepository;
+import interfaces.EstudianteRepository;
+import interfaces.MatriculaRepository;
 import services.DataLoader;
 
 public class Insert {
     public static void main(String[] args) {
-        EstudianteDao estudiantes = new EstudianteDaoImpl();
-        MatriculaDao matriculas = new MatriculaDaoImpl();
-        CarreraDao carreras = new CarreraDaoImpl();
+        EstudianteRepository estudiantes = new EstudianteRepositoryImpl();
+        MatriculaRepository matriculas = new MatriculaRepositoryImpl();
+        CarreraRepository carreras = new CarreraRepositoryImpl();
 
         DataLoader dataLoader = new DataLoader(estudiantes, carreras, matriculas);
 
@@ -19,6 +19,6 @@ public class Insert {
         dataLoader.insertCarrerasFromCSV("src/main/java/csv/carreras.csv");
         dataLoader.insertMatriculasFromCSV("src/main/java/csv/matriculas.csv");
 
-
+        dataLoader.complete();
     }
 }
